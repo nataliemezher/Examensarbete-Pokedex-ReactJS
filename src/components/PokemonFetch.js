@@ -5,15 +5,28 @@ import { useRef } from 'react';
 function PokemonFetch() {
     //useState hook används som en variabel som kan ändra o uppdateras värde, (reactive)
     let preventDoubleFetch = useRef(false);
+
     let [pokemon, setPokemon] = useState([]);
+    let [nextLoad, setNextLoad] = useState(`https://pokeapi.co/api/v2/pokemon?limit=9`); //en limit på 9, för att sen kunna nå resterande pokemon +9 osv
    
 
     const getPokemons = async () => { //async som Promises, framför funktionsnamn, await i funktionens body
 
-        let response = await fetch(`https://pokeapi.co/api/v2/pokemon/`);
+        let response = await fetch(nextLoad);
         let data = await response.json();
-        setPokemon(data.results);
-        console.log(data.results)
+        setNextLoad(data.next); //next kommer ifrån api:et
+
+        function getSpecificPokemonsInfo (result) {
+            result.forEach (async (pokemon) => {
+                let response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon.name}`)  //dynamisk länk för att få rätt info fr rätt pokemon
+                let data = await response.json();
+
+                setPokemon(currentList => [...currentList, data]);
+                // console.log(pokemon);
+            })
+        }
+
+        getSpecificPokemonsInfo(data.results)
     }
 
    useEffect(() => {
@@ -23,6 +36,20 @@ function PokemonFetch() {
     getPokemons();
 
    }, []); //[] empty or with variables,checking when changing = run function once on first render
+
+
+   return (
+    <div>
+        {pokemon.map((p, i) => (
+            <div key={p.name}> {p.name} </div>
+        )
+        
+        
+        )}
+        <button className='load-more' onClick={() => getPokemons()}> Load more </button>
+        {/* onclick kör functionen från början igen, läser om next 9 pokemons från apiet*/}
+    </div>
+   )
 }
 
 export default PokemonFetch;
