@@ -1,8 +1,10 @@
 import React, {useEffect, useState } from 'react';
+import { useRef } from 'react';
 
 
 function PokemonFetch() {
     //useState hook används som en variabel som kan ändra o uppdateras värde, (reactive)
+    let preventDoubleFetch = useRef(false);
     let [pokemon, setPokemon] = useState([]);
    
 
@@ -15,6 +17,8 @@ function PokemonFetch() {
     }
 
    useEffect(() => {
+    if (preventDoubleFetch.current) return;
+    preventDoubleFetch.current = true;
 
     getPokemons();
 
