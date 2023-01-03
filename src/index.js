@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
+import './style/pokemon_card.css';
+import './style/pokemon_content.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
