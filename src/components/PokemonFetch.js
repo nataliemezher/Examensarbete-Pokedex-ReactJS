@@ -39,9 +39,15 @@ function PokemonFetch() {
 
 
    return (
-    <div>
+    <div className='pokedex'>
         {pokemon.map((p, i) => (
-            <div key={p.name}> {p.name} </div>
+            <div className='pokemon-card'>
+                <h2 className='pokemon-title' key={p.name}> {p.name} </h2>
+                <img src={p.sprites.front_default} alt="pokemon-image" />  
+                {/* {p.sprites.other.dream_world.front_default} */}
+                <div className='pokemon-weight' > Weight:{p.weight} </div>
+                <div className='pokemon-height'> Height:{p.height} </div>
+            </div>
         )
         
         
