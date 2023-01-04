@@ -1,3 +1,8 @@
+.pokedex {
+    display: grid;
+grid-template-columns: repeat(3, 1fr)
+}
+
 .pokedex-nav {
     background-color: rgb(191, 55, 55);
     padding: 2rem;
