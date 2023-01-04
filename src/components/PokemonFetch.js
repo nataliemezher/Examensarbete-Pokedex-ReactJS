@@ -41,12 +41,14 @@ function PokemonFetch() {
    return (
     <div className='pokedex'>
         {pokemon.map((p, i) => (
-            <div className='pokemon-card'>
+            <div key={i} className='pokemon-card'>
                 <h2 className='pokemon-title' key={p.name}> {p.name} </h2>
                 <img src={p.sprites.front_default} alt="pokemon-image" />  
                 {/* {p.sprites.other.dream_world.front_default} */}
                 <div className='pokemon-weight' > Weight:{p.weight} </div>
                 <div className='pokemon-height'> Height:{p.height} </div>
+                <div className='pokemon-type'> Type: {p.types[0].type.name} </div>
+                <div className='pokemon-abilities'> Abilities: {p.abilities[0].ability.name},   </div>
             </div>
         )
         
