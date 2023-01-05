@@ -22,11 +22,12 @@ function PokemonFetch() {
                 let data = await response.json();
 
                 setPokemon(currentList => [...currentList, data]);
-                // console.log(pokemon);
+              
             })
         }
 
-        getSpecificPokemonsInfo(data.results)
+        getSpecificPokemonsInfo(data.results);
+        // console.log(data.results);
     }
 
    useEffect(() => {
@@ -37,24 +38,24 @@ function PokemonFetch() {
 
    }, []); //[] empty or with variables,checking when changing = run function once on first render
 
-
    return (
     <div className='pokedex'>
         {pokemon.map((p, i) => (
-            <div key={i} className='pokemon-card'>
+            <div key={i} className={`pokemon-card ${p.types[0].type.name}`} >
                 <h2 className='pokemon-title' key={p.name}> {p.name} </h2>
                 <img src={p.sprites.front_default} alt="pokemon-image" />  
                 {/* {p.sprites.other.dream_world.front_default} */}
-                <div className='pokemon-weight' > Weight:{p.weight} </div>
-                <div className='pokemon-height'> Height:{p.height} </div>
-                <div className='pokemon-type'> Type: {p.types[0].type.name} </div>
-                <div className='pokemon-abilities'> Abilities: {p.abilities[0].ability.name},   </div>
+                <div className='pokemon-details'>
+                    <div className='pokemon-weight' > <span className='weight-title'> Weight: </span> {p.weight} </div>
+                    <div className='pokemon-height'> <span className='height-title'>Height:</span>  {p.height} </div>
+                    <div className='pokemon-type'> <span className='type-title'> Type:</span> {p.types[0].type.name} </div>
+                    <div className='pokemon-abilities'> <span className='abilities-title'>Abilities:</span>  {p.abilities[0].ability.name},   </div>
+                </div>
             </div>
         )
         
-        
         )}
-        <button className='load-more' onClick={() => getPokemons()}> Load more </button>
+        <div className='load-more'><button onClick={() => getPokemons()}> Load more </button> </div>
         {/* onclick kör functionen från början igen, läser om next 9 pokemons från apiet*/}
     </div>
    )
