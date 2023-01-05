@@ -1,0 +1,53 @@
+/* Pokemon type color for cards */
+.pokemon-card {
+    flex: 0 32%;
+    margin: 2rem 0 2rem;
+    width: fit-content;
+    padding: 1.5rem 0 ;
+    background-color: rgb(180, 206, 252);
+    border: 1px solid #000000;
+    min-width: 160px;
+    text-align: center;
+    box-shadow: 5px 5px rgb(209, 209, 209);
+}
+
+.grass {
+    background-color: rgb(84, 255, 96);
+}
+.fire {
+    background-color: rgb(255, 207, 84);
+}
+.water {
+    background-color: rgb(129, 173, 255);
+}
+.bug {
+    background-color: rgb(228, 249, 173);
+}
+.normal {
+    background-color: rgb(232, 232, 232);
+}
+.electric {
+    background-color: rgb(255, 237, 102);
+}
+.ground {
+    background-color: rgb(191, 169, 133);
+}
+.poison {
+    background-color: rgb(255, 146, 146);
+}
+.psychic {
+    background-color: rgb(207, 151, 255);
+}
+.rock{
+    background-color: rgb(186, 180, 165);
+}
+.fighting {
+    background-color: rgb(234, 220, 204);
+}
+.ghost {
+    background-color: rgb(187, 187, 187);
+}
+
+.fairy {
+    background-color: rgb(255, 161, 239);
+}
