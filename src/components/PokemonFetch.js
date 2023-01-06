@@ -41,30 +41,25 @@ function PokemonFetch() {
         setSearchValue(searchValue)
         if (searchValue !== '') {
             let filtered = pokemon.filter((item) => {
-            return Object.values(item).join('').toLowerCase().includes(searchValue.toLowerCase())
+            return item.name.toLowerCase().startsWith(searchValue.toLowerCase()) //object.values=få värdet från object item, join = convert to string
+            
         })
+         
         setFiltered(filtered);
         } else {
-            setFiltered(pokemon)
-        }
-        
-        
-         console.log(searchValue);
+            console.log('no pokemons');
+          return 'No pokemons';
+          
+        } 
+    //   console.log(searchValue);
     }
 
     function handleSubmit(e) {
-        e.preventDefault();
+        e.preventDefault();//default action will not occur if cancelable
         getPokemons();
 
     }
    
-  
-    
-
-  
-    
- 
-
    useEffect(() => {
     if (preventDoubleFetch.current) return;
     preventDoubleFetch.current = true;
@@ -89,7 +84,24 @@ function PokemonFetch() {
         </div>
         
         
-        { pokemon.map((p, i) => (
+        { searchValue.length >= 1 ? (
+            filtered.map((p) => {
+                return (
+                    <div className={`pokemon-card ${p.types[0].type.name}`} key={p.name}>
+                    <h2 className='pokemon-title' key={p.name}> {p.name} </h2>
+                <img src={p.sprites.front_default} alt="pokemon-img" />  
+                {/* {p.sprites.other.dream_world.front_default} */}
+                <div className='pokemon-details'>
+                    <div className='pokemon-weight' > <span className='weight-title'> Weight: </span> {p.weight} </div>
+                    <div className='pokemon-height'> <span className='height-title'>Height:</span>  {p.height} </div>
+                    <div className='pokemon-type'> <span className='type-title'> Type:</span> {p.types[0].type.name} </div>
+                    <div className='pokemon-abilities'> <span className='abilities-title'>Abilities:</span>  {p.abilities[0].ability.name},   </div>
+                </div>
+                    
+                     </div>
+                )
+            })
+        ) : (pokemon.map((p, i) => (
             <div key={i} className={`pokemon-card ${p.types[0].type.name}`} >
                 <h2 className='pokemon-title' key={p.name}> {p.name} </h2>
                 <img src={p.sprites.front_default} alt="pokemon-img" />  
@@ -103,7 +115,7 @@ function PokemonFetch() {
             </div>
         ))
         
-        }
+        )}
         <div className='load-more'><button onClick={() => getPokemons()}> Load more </button> </div>
         {/* onclick kör functionen från början igen, läser om next 9 pokemons från apiet*/}
     </div>
