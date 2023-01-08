@@ -1,22 +1,22 @@
-// import PokemonFetch from "./PokemonFetch";
-// import { useState } from "react";
+import PokemonFetch from "./PokemonFetch";
+import { useState } from "react";
 
-// const Search = () => {
+const Search = ({ handleSubmit, onChange}) => {
    
  
-//     return (
+    return (
 
-//         <div className="searchbar"> 
-//         <form onSubmit={handleSubmit}>
-//                 <input
-//                     placeholder="search pokemon..."
-//                     type="text"
-//                     onChange={ (e) => searchPokemon(e.target.value)}
-//                 /> 
-//                 </form>
-//         </div>
-        
-//     )
-// }
+        <div className="searchbar"> 
+        <form onSubmit={handleSubmit}>
+                <input
+                    placeholder="search pokemon..."
+                    type="text"
+                    onChange= {onChange}
+                /> 
+            </form>
+        </div>
+       
+    )
+}
 
-// export default Search
+export default Search
