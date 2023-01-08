@@ -1,53 +1,134 @@
-/* Pokemon type color for cards */
+
 .pokemon-card {
-    flex: 0 32%;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
     margin: 2rem 0 2rem;
-    width: fit-content;
+    min-width: 249px;
+    max-width: 250px;
     padding: 1.5rem 0 ;
     background-color: rgb(180, 206, 252);
-    border: 1px solid #000000;
-    min-width: 160px;
+    border: 1px solid #464646;
     text-align: center;
-    box-shadow: 5px 5px rgb(209, 209, 209);
+    box-shadow: 5px 5px 1px rgb(209, 209, 209);
 }
 
-.grass {
-    background-color: rgb(84, 255, 96);
+.pokemon-card h2 {
+    margin-top: 0;
 }
+
+.pokemon-card:hover {
+    transform: translateY(-5px) scale(1.005) translateZ(0);
+}
+
+/* Pokemon type color for cards */
+
+.grass {
+    background-color: rgb(158, 255, 164);
+}
+.grass h2{
+    color: rgb(9, 39, 7);
+}
+
 .fire {
     background-color: rgb(255, 207, 84);
 }
-.water {
-    background-color: rgb(129, 173, 255);
+.fire h2 {
+    color: rgb(49, 40, 16);
 }
+
+.water {
+    background-color: rgb(147, 185, 255);
+}
+.water h2 {
+    color: rgb(27, 35, 50) ;
+}
+
 .bug {
     background-color: rgb(228, 249, 173);
 }
+.bug h2 {
+    color: rgb(49, 54, 37);
+}
+
 .normal {
     background-color: rgb(232, 232, 232);
 }
+.normal h2 {
+    color: rgb(44, 44, 44);
+}
+
 .electric {
     background-color: rgb(255, 237, 102);
 }
+.electric h2 {
+    color: rgb(59, 55, 23);
+}
+
 .ground {
     background-color: rgb(191, 169, 133);
 }
+.ground h2 {
+    color: rgb(29, 26, 21);
+}
+
 .poison {
     background-color: rgb(255, 146, 146);
 }
-.psychic {
-    background-color: rgb(207, 151, 255);
+.poison h2 {
+    color: rgb(43, 25, 25);
 }
+
+.psychic {
+    background-color: rgb(211, 168, 248);
+}
+.psychic h2 {
+    color: rgb(50, 36, 62);
+}
+
 .rock{
     background-color: rgb(186, 180, 165);
 }
 .fighting {
     background-color: rgb(234, 220, 204);
 }
+.fighting h2 {
+    color: rgb(51, 47, 43);
+}
+
 .ghost {
     background-color: rgb(187, 187, 187);
+}
+.ghost h2 {
+    color: rgb(23, 23, 23);
+}
+
+.ice {
+    background-color: rgb(179, 233, 255);
+}
+.ice h2 {
+    color: rgb(50, 66, 73);
+}
+.dragon {
+    background-color: rgb(217, 159, 138);
+}
+.dragon h2 {
+    color: rgb(51, 36, 30);
 }
 
 .fairy {
     background-color: rgb(255, 161, 239);
+}
+.fairy h2 {
+    color: rgb(51, 32, 48);
+}
+
+.dark {
+    background-color: #696969;
+}
+
+.steel {
+    background-color: #afc7ce;
 }

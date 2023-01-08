@@ -9,10 +9,11 @@ function PokemonFetch() {
 
     let [searchValue, setSearchValue] = useState('');
     let [filtered, setFiltered] = useState([]);
+
     
     let [pokemon, setPokemon] = useState([]);
-    let [nextLoad, setNextLoad] = useState(`https://pokeapi.co/api/v2/pokemon`); //en limit på 9, för att sen kunna nå resterande pokemon +9 osv
-
+    let [nextLoad, setNextLoad] = useState(`https://pokeapi.co/api/v2/pokemon?limit=18`); //en limit på 9, för att sen kunna nå resterande pokemon +9 osv
+    let [allPokemon, setAll] = useState();
 
     const getPokemons = async () => { //async som Promises, framför funktionsnamn, await i funktionens body
 
@@ -30,11 +31,13 @@ function PokemonFetch() {
             })
          
         }
-
+     
         getSpecificPokemonsInfo(data.results);
         // console.log(data.results);
 
     }
+    
+    
     
      //search function filter
     const searchPokemon = (searchValue) =>  {
@@ -51,15 +54,20 @@ function PokemonFetch() {
    
     const handleSubmit = (e) => {
         e.preventDefault();//default action will not occur if cancelable,kmr ej reloada
+        getPokemons(allPokemon);
     }
    //onChange function as prop
    let onChangeTarget = (e) => searchPokemon(e.target.value);
 
    useEffect(() => {
+
     if (preventDoubleFetch.current) return;
     preventDoubleFetch.current = true;
-
-    getPokemons();
+    // getAllPokemons();
+   
+    getPokemons(pokemon);
+   
+   
     
    }, []); //[] empty or with variables,checking when changing = run function once on first render
 
@@ -71,7 +79,7 @@ function PokemonFetch() {
         handleSubmit = {handleSubmit}
         onChange = {onChangeTarget}
         />
-        <div className='pokedex'>
+        <div className='pokedex-grid'>
         { searchValue.length >= 1 ? (
             filtered.map((p) => {
                 return (
@@ -104,9 +112,10 @@ function PokemonFetch() {
         ))
         
         )}
-        <div className='load-more'><button onClick={() => getPokemons()}> Load more </button> </div>
+    
         {/* onclick kör functionen från början igen, läser om next 9 pokemons från apiet*/}
     </div>
+    <div className='load-more'><button onClick={() => getPokemons()}> Load more </button> </div>
     </div>
    )
 }
