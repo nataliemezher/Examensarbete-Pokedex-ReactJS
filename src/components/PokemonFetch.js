@@ -1,6 +1,7 @@
 import React, {useEffect, useState } from 'react';
 import { useRef } from 'react';
 import Search from './Search';
+import Card from './Card';
 
 
 function PokemonFetch() {
@@ -12,8 +13,8 @@ function PokemonFetch() {
 
     
     let [pokemon, setPokemon] = useState([]);
-    let [nextLoad, setNextLoad] = useState(`https://pokeapi.co/api/v2/pokemon?limit=18`); //en limit på 9, för att sen kunna nå resterande pokemon +9 osv
-    let [allPokemon, setAll] = useState();
+    let [nextLoad, setNextLoad] = useState(`https://pokeapi.co/api/v2/pokemon`); //en limit på 9, för att sen kunna nå resterande pokemon +9 osv
+    // let [allPokemon, setAll] = useState(`https://pokeapi.co/api/v2/pokemon`);
 
     const getPokemons = async () => { //async som Promises, framför funktionsnamn, await i funktionens body
 
@@ -36,28 +37,32 @@ function PokemonFetch() {
         // console.log(data.results);
 
     }
-    
+ 
     
     
      //search function filter
-    const searchPokemon = (searchValue) =>  {
-        setSearchValue(searchValue)
+    const searchPokemon = async (searchValue) =>  {
         
+        setSearchValue(searchValue)
+       
         if (searchValue !== '') {
             let filtered = pokemon.filter((item) => {
             return item.name.toLowerCase().startsWith(searchValue.toLowerCase()) //object.values=få värdet från object item, join = convert to string
+           
             
         })
-        setFiltered(filtered);
+         setFiltered(filtered);
+        
         } 
     }
    
     const handleSubmit = (e) => {
         e.preventDefault();//default action will not occur if cancelable,kmr ej reloada
-        getPokemons(allPokemon);
+       
     }
    //onChange function as prop
    let onChangeTarget = (e) => searchPokemon(e.target.value);
+
 
    useEffect(() => {
 
@@ -65,9 +70,8 @@ function PokemonFetch() {
     preventDoubleFetch.current = true;
     // getAllPokemons();
    
-    getPokemons(pokemon);
-   
-   
+    getPokemons();
+    // getAll();
     
    }, []); //[] empty or with variables,checking when changing = run function once on first render
 
@@ -83,32 +87,49 @@ function PokemonFetch() {
         { searchValue.length >= 1 ? (
             filtered.map((p) => {
                 return (
-                    <div className={`pokemon-card ${p.types[0].type.name}`} key={p.name}>
-                    <h2 className='pokemon-title' key={p.name}> {p.name} </h2>
-                <img src={p.sprites.front_default} alt="pokemon-img" />  
-                {/* {p.sprites.other.dream_world.front_default} */}
-                <div className='pokemon-details'>
-                    <div className='pokemon-weight' > <span className='weight-title'> Weight: </span> {p.weight} </div>
-                    <div className='pokemon-height'> <span className='height-title'>Height:</span>  {p.height} </div>
-                    <div className='pokemon-type'> <span className='type-title'> Type:</span> {p.types[0].type.name} </div>
-                    <div className='pokemon-abilities'> <span className='abilities-title'>Abilities:</span>  {p.abilities[0].ability.name},   </div>
-                </div>
-                    
-                     </div>
+                    <Card
+                    id = {p.id}
+                    name = {p.name}
+                    types = {p.types.map((t) => {
+                        return(
+                            <li key={t.slot}> {t.type.name}  </li>
+                        )
+                    })}
+        
+                    image = {p.sprites.front_default}
+                    weight = {p.weight}
+                    height = {p.height}
+        
+                    abilities = {p.abilities.map((a) => {
+                     return(
+                        <li key={a.slot}> {a.ability.name} </li>
+                     )
+                    })}
+        
+                    />
                 )
             })
-        ) : (pokemon.map((p, i) => (
-            <div key={i} className={`pokemon-card ${p.types[0].type.name}`} >
-                <h2 className='pokemon-title' key={p.name}> {p.name} </h2>
-                <img src={p.sprites.front_default} alt="pokemon-img" />  
-                {/* {p.sprites.other.dream_world.front_default} */}
-                <div className='pokemon-details'>
-                    <div className='pokemon-weight' > <span className='weight-title'> Weight: </span> {p.weight} </div>
-                    <div className='pokemon-height'> <span className='height-title'>Height:</span>  {p.height} </div>
-                    <div className='pokemon-type'> <span className='type-title'> Type:</span> {p.types[0].type.name} </div>
-                    <div className='pokemon-abilities'> <span className='abilities-title'>Abilities:</span>  {p.abilities[0].ability.name},   </div>
-                </div>
-            </div>
+        ) : (pokemon.map((p) => (
+            <Card
+            id = {p.id}
+            name = {p.name}
+            types = {p.types.map((t) => {
+                return(
+                    <li key={t.slot}> {t.type.name}  </li>
+                )
+            })}
+
+            image = {p.sprites.front_default}
+            weight = {p.weight}
+            height = {p.height}
+
+            abilities = {p.abilities.map((a) => {
+             return(
+                <li key={a.slot}> {a.ability.name} </li>
+             )
+            })}
+
+            />
         ))
         
         )}

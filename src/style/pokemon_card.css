@@ -1,13 +1,12 @@
 
 .pokemon-card {
-    
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     margin: 2rem 0 2rem;
     min-width: 249px;
-    max-width: 250px;
+    max-width: 280px;
     padding: 1.5rem 0 ;
     background-color: rgb(180, 206, 252);
     border: 1px solid #464646;
@@ -18,10 +17,34 @@
 .pokemon-card h2 {
     margin-top: 0;
 }
+.pokemon-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    font-size: 14px;
+}
+
+.pokemon-type, .pokemon-abilities{
+    text-align: left;
+}
+.pokemon-weight, .pokemon-height {
+    display: flex;
+}
+.type-title, .abilities-title, .weight-title, .height-title {
+    font-weight: 700;
+}
+
+.abilities-list, .types-list {
+    font-size: 12px;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
 
 .pokemon-card:hover {
     transform: translateY(-5px) scale(1.005) translateZ(0);
 }
+
 
 /* Pokemon type color for cards */
 
