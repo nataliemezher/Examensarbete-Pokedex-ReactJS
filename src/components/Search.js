@@ -1,9 +1,6 @@
-import PokemonFetch from "./PokemonFetch";
-import { useState } from "react";
 
-const Search = ({ handleSubmit, onChange}) => {
-   
- 
+const Search = ({ handleSubmit, onChange,  handleSearchClick}) => {
+
     return (
 
         <div className="searchbar"> 
@@ -13,6 +10,7 @@ const Search = ({ handleSubmit, onChange}) => {
                     type="text"
                     onChange= {onChange}
                 /> 
+                <button type="submit" onClick={handleSearchClick}>Search</button>
             </form>
         </div>
        

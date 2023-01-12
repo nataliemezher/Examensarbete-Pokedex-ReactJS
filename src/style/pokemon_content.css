@@ -8,9 +8,10 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin: 0 5rem;
+    margin: 0 8rem;
     max-width: 100rem;
-    gap: 2rem;
+    gap: 1.5rem;
+   
 }
 
 .pokedex-nav {
@@ -37,6 +38,7 @@
     margin: 0;
     padding-bottom: 2rem;
     box-shadow: 1px 4px 1px rgb(209, 209, 209);
+    border-bottom: 1px solid #464646;
 }
 
 .load-more {
@@ -50,6 +52,7 @@
     border: 1px solid #000000;
     box-shadow: 4px 4px rgb(209, 209, 209);
    cursor: pointer;
+   margin-top: 1.5rem;
 }
 
 @media (min-width: 900px) {
@@ -57,5 +60,7 @@
     .pokedex-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
+        grid-gap: 1.5rem;
+        align-items: center;
     }
 }

@@ -12,15 +12,33 @@
     border: 1px solid #464646;
     text-align: center;
     box-shadow: 5px 5px 1px rgb(209, 209, 209);
+    max-height: 305px;
+    min-height: 304px;
 }
-
+/* .pokemon-card img {
+    /* width: 100%;
+    height: fit-content; 
+   
+} */
 .pokemon-card h2 {
     margin-top: 0;
 }
+/* .pokemon-img {
+background-color: rgb(251, 251, 251);
+padding: 0 3.5rem;
+margin: 0.4rem 0;
+border: 1px solid #464646;
+
+} */
 .pokemon-details {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
+    max-width: 190px;
+    font-size: 14px;
+}
+
+.hp, .attack {
     font-size: 14px;
 }
 
@@ -42,7 +60,7 @@
 }
 
 .pokemon-card:hover {
-    transform: translateY(-5px) scale(1.005) translateZ(0);
+    transform: translateY(-5px) scale(1) translateZ(0);
 }
 
 
@@ -70,7 +88,7 @@
 }
 
 .bug {
-    background-color: rgb(228, 249, 173);
+    background-color: rgb(235, 251, 184);
 }
 .bug h2 {
     color: rgb(49, 54, 37);

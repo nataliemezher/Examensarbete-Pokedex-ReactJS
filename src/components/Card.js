@@ -1,8 +1,9 @@
-const Card = ({id, name, types, image, weight, height, abilities}) => {
+const Card = ({id, hp, attack, name, types, image, weight, height, abilities, typefirstForColor}) => {
     return (
-        <div key={id} className={`pokemon-card ${types}`} >
-                <h2 className='pokemon-title' key={id}> {name} - {id}  </h2>
-                <img src={image} alt="pokemon-img" />  
+        <div key={id} className={`pokemon-card ${typefirstForColor}`} >
+                <h2 className='pokemon-title' key={id}> {name} - #{id}  </h2>
+                <span className="hp">  ❤️={hp}  </span> <span className="attack"> 🗡️={attack} </span>
+                <div className="pokemon-img"><img src={image} alt="pokemon-img"  />  </div>
                 {/* {p.sprites.other.dream_world.front_default} */}
                 <div className='pokemon-details'>
                     <div className='pokemon-weight' > <div className='weight-title'> Weight:  </div> <div> {weight}</div></div>
