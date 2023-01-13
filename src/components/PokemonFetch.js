@@ -33,10 +33,10 @@ function PokemonFetch() {
     }
  
     const searchPokemon = async (searchValue) =>  {
+        setSearchValue(searchValue)
 
-       
         if (searchValue !== '') {
-           setSearchValue(searchValue)
+          
         let filteredList = pokemon.filter((item) => {
          
         return item.name.toLowerCase().startsWith(searchValue.toLowerCase()) 
