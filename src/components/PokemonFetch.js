@@ -24,7 +24,7 @@ function PokemonFetch() {
         
         setNextLoad(data.next); //next kommer ifrån api:et
         
-        getSpecificPokemonsInfo(data.results);
+        // getSpecificPokemonsInfo(data.results);
         // console.log(data.results);
        
     }
@@ -34,6 +34,7 @@ function PokemonFetch() {
       let res = await fetch(all)
       let alldata = await res.json();
       setAllPokemon(alldata.results);
+      getSpecificPokemonsInfo(alldata.results);
       
     }
     
@@ -58,7 +59,8 @@ function PokemonFetch() {
        
         if (searchValue !== '') {
            setSearchValue(searchValue)
-        let filteredList = allPokemon.filter((item) => {
+        let filteredList = pokemon.filter((item) => {
+         
         return item.name.toLowerCase().startsWith(searchValue.toLowerCase()) //object.values=få värdet från object item, join = convert to string
            
              
@@ -67,7 +69,7 @@ function PokemonFetch() {
         console.log(filteredList);
         // console.log('no')
         } else {
-          console.log('f.u')
+          console.log('couldnt get pokemons from submit button')
         }
        
         
@@ -121,7 +123,7 @@ function PokemonFetch() {
         { searchValue.length >= 1 ? (
             filtered.map((p) => {
                 return (
-                  <div key={p.id}><p key={p.name}>{p.name}</p></div>
+                  <div key={p.id}><h3>{p.name}</h3><p> {p.types[0].type.name}</p></div>
                     // <Card
                     // key = {p.id}
                     // id = {p.id}
