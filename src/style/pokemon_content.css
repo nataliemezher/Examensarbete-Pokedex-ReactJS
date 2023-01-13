@@ -41,26 +41,24 @@
     border-bottom: 1px solid #464646;
 }
 
-.load-more {
-    display: flex;
-    justify-content: center;
-    min-width: -moz-available;
-}
-
-.load-more button {
-    padding: 0.5rem 1rem;
-    border: 1px solid #000000;
-    box-shadow: 4px 4px rgb(209, 209, 209);
-   cursor: pointer;
-   margin-top: 1.5rem;
+.empty-pokedex {
+    margin: 2rem;
 }
 
 @media (min-width: 900px) {
 
     .pokedex-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        grid-gap: 1.5rem;
-        align-items: center;
+        display: flex;
+        flex-wrap: wrap;
     }
+
+    .pokemon-card {
+        flex: 0 1 33%;
+    }
+
+    
+    .empty-pokedex {
+      display: flex;
+    }
+    
 }
