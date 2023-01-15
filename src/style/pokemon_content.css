@@ -19,6 +19,10 @@
     flex-direction: column;
 }
 
+.pokedex-nav img {
+    width: 100%;
+}
+
 .searchbar, .pokedex-logo {
     display: flex;
     justify-content: center;
