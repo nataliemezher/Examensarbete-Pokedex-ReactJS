@@ -86,45 +86,13 @@ function PokemonFetch() {
         ) : searchValue.length >= 1 ? (
           filtered.map((p) => {
             return (
-              <Card
-                key={p.id}
-                id={p.id}
-                name={p.name}
-                types={p.types.map((t) => {
-                  return <li key={t.slot}> {t.type.name} </li>;
-                })}
-                typefirstForColor={p.types[0].type.name}
-                image={p.sprites.front_default}
-                weight={p.weight}
-                height={p.height}
-                hp={p.stats[0].base_stat}
-                attack={p.stats[1].base_stat}
-                abilities={p.abilities.map((a) => {
-                  return <li key={a.slot}> {a.ability.name} </li>;
-                })}
-              />
+              <Card  key={p.id} p={p} />
             );
           })
         ) : (
           pokemonInfoByPage.map((p) => {
             return (
-              <Card
-                key={p.id}
-                id={p.id}
-                name={p.name}
-                types={p.types.map((t) => {
-                  return <li key={t.slot}> {t.type.name} </li>;
-                })}
-                typefirstForColor={p.types[0].type.name}
-                image={p.sprites.front_default}
-                weight={p.weight}
-                height={p.height}
-                hp={p.stats[0].base_stat}
-                attack={p.stats[1].base_stat}
-                abilities={p.abilities.map((a) => {
-                  return <li key={a.slot}> {a.ability.name} </li>;
-                })}
-              />
+              <Card key={p.id} p={p} />
             );
           })
         )}

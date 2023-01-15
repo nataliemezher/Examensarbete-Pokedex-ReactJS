@@ -1,8 +1,6 @@
 
-const Search = ({  onChange}) => {
-
+const Search = ({onChange}) => {
     return (
-
         <div className="searchbar"> 
                 <input
                     placeholder="search pokemon..."
@@ -10,7 +8,6 @@ const Search = ({  onChange}) => {
                     onChange= {onChange}
                 /> 
         </div>
-       
     )
 }
 

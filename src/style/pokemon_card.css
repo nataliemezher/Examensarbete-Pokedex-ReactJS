@@ -15,27 +15,18 @@
     min-height: 304px;
     border-radius: 8px;
 }
-/* .pokemon-card img {
-    /* width: 100%;
-    height: fit-content; 
-   
-} */
+
 .pokemon-card h2 {
     margin-top: 0;
 }
-/* .pokemon-img {
-background-color: rgb(251, 251, 251);
-padding: 0 3.5rem;
-margin: 0.4rem 0;
-border: 1px solid #464646;
 
-} */
 .pokemon-details {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
     max-width: 190px;
     font-size: 14px;
+    list-style-type: none;
 }
 
 .hp, .attack {
@@ -45,9 +36,11 @@ border: 1px solid #464646;
 .pokemon-type, .pokemon-abilities{
     text-align: left;
 }
+
 .pokemon-weight, .pokemon-height {
     display: flex;
 }
+
 .type-title, .abilities-title, .weight-title, .height-title {
     font-weight: 700;
 }
