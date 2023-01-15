@@ -46,7 +46,7 @@ function PokemonFetch() {
     result.forEach(async (pokemon) => {
       let response = await fetch(
         `https://pokeapi.co/api/v2/pokemon/${pokemon.name}`
-      ); //dynamisk länk för att få rätt info fr rätt pokemon
+      ); 
       let data = await response.json();
       setPokemon((currentList) => [...currentList, data]);
     });
@@ -74,6 +74,7 @@ function PokemonFetch() {
 
     getAll();
     getPokemonByPage();
+      // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []); //[] empty or with variables,checking when changing = run function once on first render
 
   return (
